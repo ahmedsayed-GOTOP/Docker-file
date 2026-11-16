@@ -1,4 +1,90 @@
-## demo app - developing with Docker
+# Node.js + MongoDB Docker Project
+
+A containerized web application built with **Docker** and **Docker Compose**, using **Node.js**, **MongoDB**, and **Mongo Express**.
+
+This project is adapted from [TechWorld with Nana's Docker tutorial](https://gitlab.com/nanuchi/techworld-js-docker-demo-app), with additional configuration for environment variables and Docker Compose.
+
+## Architecture
+
+The application consists of three services:
+
+- **my-app:** Node.js web application running on port `3000`.
+- **mongodb:** MongoDB database running on port `27017`.
+- **mongo-express:** Web-based MongoDB management interface running on port `8080`.
+
+All services communicate through a Docker Compose network. MongoDB data is persisted using a named Docker volume.
+
+## Prerequisites
+
+- Docker Engine
+- Docker Compose plugin
+
+## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ahmedsayed-GOTOP/Docker-file.git
+   cd Docker-file
+   ```
+
+2. Create your environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Edit `.env` and set your own database credentials and connection string. Make sure the password in `MONGO_URL` matches `MONGO_INITDB_ROOT_PASSWORD`.
+
+4. Build and start the services:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+5. Check the running containers:
+
+   ```bash
+   docker compose ps
+   ```
+
+## Access the Application
+
+- Web application: http://localhost:3000
+- Mongo Express: http://localhost:8080
+
+## Useful Commands
+
+```bash
+# View service logs
+docker compose logs -f
+
+# Stop services
+docker compose down
+
+# Stop services and remove the database volume
+docker compose down -v
+```
+
+**Warning:** `docker compose down -v` deletes the persisted MongoDB data.
+
+## Technologies
+
+- Docker
+- Docker Compose
+- Node.js
+- Express.js
+- MongoDB
+- Mongo Express
+
+## What I Practiced
+
+- Building a Docker image using a Dockerfile.
+- Running multiple containers with Docker Compose.
+- Connecting application and database containers through a Docker network.
+- Configuring services using environment variables.
+- Persisting database data with Docker volumes.
+- Testing application-to-database connectivity.## demo app - developing with Docker
 
 This demo app shows a simple user profile app set up using 
 - index.html with pure js and css styles
